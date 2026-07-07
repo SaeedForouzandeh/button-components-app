@@ -1,70 +1,370 @@
-# Getting Started with Create React App
+# 🎨 Button Components Library - React
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+![React](https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB)
+![CSS3](https://img.shields.io/badge/CSS3-1572B6?style=for-the-badge&logo=css3&logoColor=white)
+![JavaScript](https://img.shields.io/badge/JavaScript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black)
 
-## Available Scripts
+A **beautiful, production-ready** collection of Button & CTA components built with **React**. Includes multiple variants, states, and interactive elements perfect for modern web applications.
 
-In the project directory, you can run:
+## 📸 Screenshots
 
-### `npm start`
+![Button Components Showcase](screenshots/ButtonComponentsShowcase.png)
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+## ✨ Features
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+- 🎯 **4 Button Variants** – Primary, Secondary, Outline, Ghost
+- 📏 **3 Sizes** – Small, Medium, Large
+- 🎭 **Icon Buttons** – Shopping Cart, Search, Wishlist with badge notifications
+- ⏳ **Loading State** – Built-in spinner for form submissions
+- 🔗 **Button Groups** – Horizontal, Vertical, and Segmented controls
+- 🎪 **Floating Action Button (FAB)** – WhatsApp-style floating button
+- 🚫 **Disabled States** – Proper disabled styling for all variants
+- 📱 **Fully Responsive** – Works perfectly on mobile, tablet, and desktop
+- 🎨 **Beautiful Animations** – Smooth hover effects and transitions
+- ♿ **Accessible** – ARIA labels and keyboard navigation support
 
-### `npm test`
+## 🚀 Quick Start
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+### Prerequisites
 
-### `npm run build`
+- Node.js (v14 or higher)
+- npm or yarn
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+### Installation
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+```bash
+# Clone the repository
+git clone https://github.com/SaeedForouzandeh/button-components-app.git
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+# Navigate to project
+cd button-components-app
 
-### `npm run eject`
+# Install dependencies
+npm install
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+# Start development server
+npm start
+```
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+The app will open at **http://localhost:3000**
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+## 📁 Project Structure
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+```
+src/
+├── components/
+│   ├── ui/
+│   │   ├── Button/
+│   │   │   ├── Button.jsx          # Main button component
+│   │   │   ├── IconButton.jsx      # Icon-only button with badge
+│   │   │   ├── FAB.jsx             # Floating Action Button
+│   │   │   ├── ButtonGroup.jsx     # Button group container
+│   │   │   └── index.js            # Barrel export
+│   │   └── Spinner/
+│   │       ├── Spinner.jsx         # Loading spinner component
+│   │       └── index.js
+│   └── icons/
+│       ├── CartIcon.jsx            # Shopping cart SVG icon
+│       ├── SearchIcon.jsx          # Search SVG icon
+│       ├── HeartIcon.jsx           # Heart/wishlist SVG icon
+│       └── index.js
+├── App.js                          # Demo showcase page
+├── App.css                         # Demo page styles
+└── index.js                        # App entry point
+```
 
-## Learn More
+## 🎮 Usage Examples
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+### Basic Button
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+```jsx
+import { Button } from "./components/ui/Button";
 
-### Code Splitting
+function App() {
+  return (
+    <Button variant="primary" onClick={() => alert("Clicked!")}>
+      Click Me
+    </Button>
+  );
+}
+```
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+### Button with Icon
 
-### Analyzing the Bundle Size
+```jsx
+import { Button } from "./components/ui/Button";
+import CartIcon from "./components/icons/CartIcon";
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+function App() {
+  return (
+    <Button variant="primary" icon={CartIcon}>
+      Add to Cart
+    </Button>
+  );
+}
+```
 
-### Making a Progressive Web App
+### Icon Button with Badge
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+```jsx
+import { IconButton } from "./components/ui/Button";
+import CartIcon from "./components/icons/CartIcon";
 
-### Advanced Configuration
+function App() {
+  return (
+    <IconButton
+      icon={CartIcon}
+      label="Shopping Cart"
+      badge={5}
+      variant="filled"
+      onClick={() => console.log("Cart clicked")}
+    />
+  );
+}
+```
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+### Loading Button
 
-### Deployment
+```jsx
+import React, { useState } from "react";
+import { Button } from "./components/ui/Button";
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+function App() {
+  const [loading, setLoading] = useState(false);
 
-### `npm run build` fails to minify
+  const handleSubmit = async () => {
+    setLoading(true);
+    await submitForm(); // Your async operation
+    setLoading(false);
+  };
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+  return (
+    <Button variant="primary" loading={loading} onClick={handleSubmit}>
+      {loading ? "Submitting..." : "Submit Form"}
+    </Button>
+  );
+}
+```
+
+### Floating Action Button (FAB)
+
+```jsx
+import { FAB } from "./components/ui/Button";
+import CartIcon from "./components/icons/CartIcon";
+
+function App() {
+  return (
+    <FAB
+      icon={CartIcon}
+      label="Chat with us"
+      color="primary"
+      position="bottom-right"
+      onClick={() => openChat()}
+    />
+  );
+}
+```
+
+### Button Group
+
+```jsx
+import { Button, ButtonGroup } from "./components/ui/Button";
+
+function App() {
+  return (
+    <ButtonGroup>
+      <Button variant="outline">Left</Button>
+      <Button variant="outline">Center</Button>
+      <Button variant="outline">Right</Button>
+    </ButtonGroup>
+  );
+}
+```
+
+### Segmented Control
+
+```jsx
+import React, { useState } from "react";
+import { Button, ButtonGroup } from "./components/ui/Button";
+
+function App() {
+  const [view, setView] = useState("day");
+
+  return (
+    <ButtonGroup segmented>
+      <Button
+        variant={view === "day" ? "primary" : "ghost"}
+        onClick={() => setView("day")}
+      >
+        📅 Day
+      </Button>
+      <Button
+        variant={view === "week" ? "primary" : "ghost"}
+        onClick={() => setView("week")}
+      >
+        📊 Week
+      </Button>
+      <Button
+        variant={view === "month" ? "primary" : "ghost"}
+        onClick={() => setView("month")}
+      >
+        📈 Month
+      </Button>
+    </ButtonGroup>
+  );
+}
+```
+
+### Full Width Button
+
+```jsx
+import { Button } from "./components/ui/Button";
+import CartIcon from "./components/icons/CartIcon";
+
+function App() {
+  return (
+    <Button
+      variant="primary"
+      size="lg"
+      icon={CartIcon}
+      style={{ width: "100%" }}
+    >
+      Proceed to Checkout - $299.99
+    </Button>
+  );
+}
+```
+
+## 🎨 Component Props
+
+### Button Props
+
+| Prop       | Type        | Default     | Description                                              |
+| ---------- | ----------- | ----------- | -------------------------------------------------------- |
+| `variant`  | `string`    | `'primary'` | `'primary'` \| `'secondary'` \| `'outline'` \| `'ghost'` |
+| `size`     | `string`    | `'md'`      | `'sm'` \| `'md'` \| `'lg'`                               |
+| `loading`  | `boolean`   | `false`     | Show loading spinner                                     |
+| `disabled` | `boolean`   | `false`     | Disable button                                           |
+| `icon`     | `component` | `null`      | Icon component to display                                |
+| `onClick`  | `function`  | `null`      | Click handler                                            |
+| `style`    | `object`    | `{}`        | Custom inline styles                                     |
+| `children` | `node`      | `null`      | Button content                                           |
+
+### IconButton Props
+
+| Prop       | Type        | Default      | Description               |
+| ---------- | ----------- | ------------ | ------------------------- |
+| `icon`     | `component` | **required** | Icon component            |
+| `label`    | `string`    | **required** | Tooltip text (aria-label) |
+| `badge`    | `number`    | `0`          | Notification badge count  |
+| `variant`  | `string`    | `'default'`  | `'default'` \| `'filled'` |
+| `active`   | `boolean`   | `false`      | Active state              |
+| `disabled` | `boolean`   | `false`      | Disable button            |
+| `onClick`  | `function`  | `null`       | Click handler             |
+
+### FAB Props
+
+| Prop       | Type        | Default          | Description                                                          |
+| ---------- | ----------- | ---------------- | -------------------------------------------------------------------- |
+| `icon`     | `component` | **required**     | Icon component                                                       |
+| `label`    | `string`    | **required**     | Tooltip text (title)                                                 |
+| `color`    | `string`    | `'primary'`      | `'primary'` \| `'secondary'` \| `'success'`                          |
+| `position` | `string`    | `'bottom-right'` | `'bottom-right'` \| `'bottom-left'` \| `'top-right'` \| `'top-left'` |
+| `onClick`  | `function`  | `null`           | Click handler                                                        |
+
+### ButtonGroup Props
+
+| Prop        | Type      | Default      | Description             |
+| ----------- | --------- | ------------ | ----------------------- |
+| `segmented` | `boolean` | `false`      | Segmented control style |
+| `children`  | `node`    | **required** | Button components       |
+
+## 🎯 Component Variants
+
+### Button Variants
+
+- **Primary** - Gradient purple background, white text
+- **Secondary** - Gradient orange-red background, white text
+- **Outline** - Transparent with purple border and text
+- **Ghost** - Transparent with gray text, light background on hover
+
+### Button Sizes
+
+- **Small** (sm) - 13px font, compact padding
+- **Medium** (md) - 15px font, default padding
+- **Large** (lg) - 17px font, spacious padding
+
+### IconButton Variants
+
+- **Default** - Transparent, gray icon
+- **Filled** - Gradient background, white icon
+- **Active** - Purple tinted background for active state
+
+### FAB Colors
+
+- **Primary** - Purple gradient
+- **Secondary** - Orange-red gradient
+- **Success** - Green gradient
+
+### FAB Positions
+
+- `bottom-right`
+- `bottom-left`
+- `top-right`
+- `top-left`
+
+## 🛠️ Built With
+
+- [React 18](https://react.dev/) - UI Library
+- [Create React App](https://create-react-app.dev/) - Project bootstrapping
+- Inline Styles - No external CSS dependencies
+
+## 📦 Available Scripts
+
+```bash
+# Start development server
+npm start
+
+# Build for production
+npm run build
+
+# Run tests
+npm test
+
+# Eject configuration
+npm run eject
+```
+
+## 🎯 Browser Support
+
+| Chrome | Firefox | Safari | Edge   |
+| ------ | ------- | ------ | ------ |
+| ✅ 90+ | ✅ 88+  | ✅ 14+ | ✅ 90+ |
+
+## 🤝 Contributing
+
+Contributions are welcome! Feel free to:
+
+1. Fork the repository
+2. Create a feature branch (`git checkout -b feature/AmazingFeature`)
+3. Commit your changes (`git commit -m 'Add some AmazingFeature'`)
+4. Push to the branch (`git push origin feature/AmazingFeature`)
+5. Open a Pull Request
+
+## 📄 License
+
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+
+## 🌟 Show Your Support
+
+Give a ⭐️ if this project helped you!
+
+## 📞 Contact
+
+Saeed Forouzandeh
+
+Project Link: [https://github.com/SaeedForouzandeh/button-components-app](https://github.com/SaeedForouzandeh/button-components-app)
+
+---
+
+Made with ❤️ and React
